@@ -8,3 +8,5 @@
 <script lang="ts" setup>
 import { LayoutView } from '@models/layout';
 </script>
+
+<style lang="scss" src="./style.scss"/>

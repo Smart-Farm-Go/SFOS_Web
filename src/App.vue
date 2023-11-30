@@ -1,5 +1,7 @@
 <template>
-  <router-view/>
+  <el-config-provider size="small">
+    <router-view/>
+  </el-config-provider>
 </template>
 
 <script lang="ts"> export default { name: 'App' };</script>

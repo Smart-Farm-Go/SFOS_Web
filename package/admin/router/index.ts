@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { useUser } from '@stores/user.stores.ts';
+import { useUserStore } from '@stores/user.stores.ts';
 import { Logger } from '@utils/Logger.ts';
 import { routes } from './routes';
 import { App } from 'vue';
@@ -10,14 +10,14 @@ const router = createRouter({
   history: createWebHistory(),
 });
 
-let isLogin = false;
+let isLogin = true;
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to, _, next) => {
   setDocTitle((to.meta.title) as string || '');
 
   if (!isLogin && !to.fullPath.includes('auth')) {
     logger.info('检测用户登录');
-    const user = new useUser();
+    const user = useUserStore();
 
     if (!user.token) {
       logger.info('未登录，跳转到登录页面。');

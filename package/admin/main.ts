@@ -1,3 +1,5 @@
+import 'element-plus/theme-chalk/index.css';
+import * as ElementPlus from 'element-plus';
 import logger from '@utils/Logger.ts';
 import { useRoutes } from './router';
 import { createPinia } from 'pinia';
@@ -8,6 +10,7 @@ async function bootstrap() {
   const app = createApp(App);
   app.use(createPinia());
   await useRoutes(app);
+  app.use(ElementPlus);
   app.mount('#app');
 }
 

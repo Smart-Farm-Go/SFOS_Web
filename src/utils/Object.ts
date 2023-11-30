@@ -4,9 +4,12 @@ export const getType = (value: any, lower = false) => ((type: string) => lower ?
 // 判断类型
 export const isType = (value: any, type: string) => getType(value, true) === type.toLowerCase();
 
+// 类型
+export const hasType = (value: any, ...types: string[]) => types.map(v => v.toLocaleString()).includes(getType(value, true));
+
 // 合并选项
-export function mergeOptions<T = any, V = any>(option: T, ...options: V[]): T {
-  const result = Object.assign({}, option || {}) as T;
+export function mergeOptions<T = any>(option: any, ...options: any[]): T {
+  const result = Object.assign({}, option || {}) as any;
   for (const option of options) {
     if (typeof option === 'object' && option !== null) {
       for (const key of Object.keys(option)) {
